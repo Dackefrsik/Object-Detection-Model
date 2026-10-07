@@ -91,6 +91,7 @@ def save_image():
     else:
         print("No active frame ton save image from")
 
+# Uppadaterar the camera frame if it is running
 def update_camera(label_widget, button1):
     global current_frame
 
