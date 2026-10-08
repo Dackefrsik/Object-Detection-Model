@@ -3,7 +3,6 @@ import cv2
 from PIL import Image, ImageTk 
 import os
 from datetime import datetime
-import keyboard
 
 # Source https://www.geeksforgeeks.org/python/how-to-show-webcam-in-tkinter-window-python/
 camera = cv2.VideoCapture(0)
