@@ -30,3 +30,6 @@ dist/
 
 # Temporary ignore of test images to avoid storing unwanted images on github
 *.jpg
+
+# text-files
+*.txt

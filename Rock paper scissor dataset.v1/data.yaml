@@ -1,0 +1,13 @@
+train: ../train/images
+val: ../valid/images
+test: ../test/images
+
+nc: 3
+names: ['Papper', 'Rock', 'Scissor']
+
+roboflow:
+  workspace: daniels-workspace-aj8td
+  project: rock-paper-scissor-5ehbt
+  version: 1
+  license: CC BY 4.0
+  url: https://universe.roboflow.com/daniels-workspace-aj8td/rock-paper-scissor-5ehbt/dataset/1

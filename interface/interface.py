@@ -3,6 +3,7 @@ import cv2
 from PIL import Image, ImageTk 
 import os
 from datetime import datetime
+import keyboard
 
 # Source https://www.geeksforgeeks.org/python/how-to-show-webcam-in-tkinter-window-python/
 camera = cv2.VideoCapture(0)
@@ -17,8 +18,11 @@ def interface():
     camera.set(cv2.CAP_PROP_FRAME_HEIGHT, height)
 
     app = Tk()
+    app.focus_force() # Gives the application keyboard focus
+
     app.bind('<Escape>', lambda e: app.quit())
-    app.title("Oject detection model ")
+    app.bind("<a>", lambda e: save_image())
+    app.title("Oject detection model")
 
     label_widget = Label(app)
     label_widget.grid(row=1, column=0)
@@ -84,7 +88,7 @@ def close_application(app):
 def save_image():
     print("Try to save image...")
     if current_frame is not None:
-        date_time = datetime.now().strftime("%Y-%m-%d_%H-%M-S") # Source https://www.geeksforgeeks.org/python/python-strftime-function/
+        date_time = datetime.now().strftime("%Y-%m-%d_%H-%M-%S_%f") # Source https://www.geeksforgeeks.org/python/python-strftime-function/
         os.makedirs("images", exist_ok=True)
         cv2.imwrite("images/frame" + date_time + ".jpg", current_frame)
         print("Images saved")
