@@ -1,9 +1,25 @@
 import os
 import shutil
+import random
 
 # Paths for images and labels in dataset
-images = os.listdir("../Rock paper scissor dataset.v1/train/images")
-labels = os.listdir("../Rock paper scissor dataset.v1/train/labels")
+images = os.listdir("../Rock paper scissor dataset.v2/train/images")
+labels = os.listdir("../Rock paper scissor dataset.v2/train/labels")
+
+classes = {0: [], 1: [], 2: []}
+
+for image in images:
+    labelName = os.path.splitext(image)[0] + ".txt"
+    labelPath = os.path.join(
+        "../Rock paper scissor dataset.v2/train/labels",
+        labelName
+    )
+
+    with open(labelPath, "r") as file:
+        classID = int(file.readline().split()[0])
+
+    classes[classID].append(image)
+
 
 # Finding images indexes to split data in 70%, 15% and 15%
 startVal = int(len(images) * 0.7)
@@ -35,8 +51,8 @@ def splitData(startVal, endVal):
     os.makedirs(trainPathLabels, exist_ok=True)
 
     # Validateimages
-    validPathImages = "../splittedDataset/validate/images"
-    validPathLabels = "../splittedDataset/validate/labels"
+    validPathImages = "../splittedDataset/valid/images"
+    validPathLabels = "../splittedDataset/valid/labels"
 
     shutil.rmtree(validPathImages)
     shutil.rmtree(validPathLabels)
@@ -44,53 +60,81 @@ def splitData(startVal, endVal):
     os.makedirs(validPathImages, exist_ok=True)
     os.makedirs(validPathLabels, exist_ok=True)
 
+    trainImages = []
+    testImages = []
+    validImages = []
+
+    for classID, classImages in classes.items():
+
+        random.shuffle(classImages)
+
+        startVal = int(len(classImages) * 0.7)
+        endVal = int(len(classImages) * 0.85)
+
+        trainImages.extend(classImages[:startVal])
+        testImages.extend(classImages[startVal:endVal])
+        validImages.extend(classImages[endVal:])
+
+    print(f"Train: {len(trainImages)}")
+    print(f"Test: {len(testImages)}")
+    print(f"Validation: {len(validImages)}")
+
     # Training data
-    for i in range(startVal):
+    for i in trainImages:
         
         image = os.path.join(
-        "../Rock paper scissor dataset.v1/train/images",
-        images[i]
+        "../Rock paper scissor dataset.v2/train/images",
+        i
         )
+
+        labelName = os.path.splitext(i)[0] + ".txt"
         
         label = os.path.join(
-        "../Rock paper scissor dataset.v1/train/labels",
-        labels[i]
+        "../Rock paper scissor dataset.v2/train/labels",
+        labelName
         )
 
         shutil.copy(image, trainPathImages)
         shutil.copy(label, trainPathLabels)
 
     # Test data
-    for i in range(startVal, endVal):
+    for i in testImages:
         image = os.path.join(
-        "../Rock paper scissor dataset.v1/train/images",
-        images[i]
+        "../Rock paper scissor dataset.v2/train/images",
+        i
         )
+
+        labelName = os.path.splitext(i)[0] + ".txt"
+
         
         label = os.path.join(
-        "../Rock paper scissor dataset.v1/train/labels",
-        labels[i]
+        "../Rock paper scissor dataset.v2/train/labels",
+        labelName
         )
 
         shutil.copy(image, testPathImages)
         shutil.copy(label, testPathLabels)
 
     # Valaidation data
-    for i in range(endVal, len(images)):
+    for i in validImages:
         image = os.path.join(
-        "../Rock paper scissor dataset.v1/train/images",
-        images[i]
+        "../Rock paper scissor dataset.v2/train/images",
+        i
         )
+
+        labelName = os.path.splitext(i)[0] + ".txt"
         
         label = os.path.join(
-        "../Rock paper scissor dataset.v1/train/labels",
-        labels[i]
+        "../Rock paper scissor dataset.v2/train/labels",
+        labelName
         )
 
         shutil.copy(image, validPathImages)
         shutil.copy(label, validPathLabels)
 
 if __name__ == "__main__":
-    print("Start training...")
+    print("Start splitting...")
 
     splitData(startVal, endVal)
+
+    print("Splitting done...")

@@ -1,4 +1,4 @@
-# Virtual environment
+# Virtual environments
 .venv/
 venv/
 
@@ -9,10 +9,8 @@ __pycache__/
 # Jupyter
 .ipynb_checkpoints/
 
-# VS Code
+# IDEs
 .vscode/
-
-# PyCharm
 .idea/
 
 # Environment variables / secrets
@@ -27,9 +25,31 @@ build/
 dist/
 *.egg-info/
 
-
-# Temporary ignore of test images to avoid storing unwanted images on github
+# Dataset images and annotations
 *.jpg
-
-# text-files
 *.txt
+
+# YOLO cache files
+*.cache
+
+# Temporary files
+*.tmp
+*.log
+
+# YOLO training files that can be regenerated
+**/weights/last.pt
+**/BoxF1_curve.png
+**/BoxP_curve.png
+**/BoxR_curve.png
+**/BoxPR_curve.png
+**/F1_curve.png
+**/P_curve.png
+**/R_curve.png
+**/PR_curve.png
+
+# Generated prediction outputs
+runs/detect/
+runs/predict/
+
+# Local GUI recordings
+*.mp4

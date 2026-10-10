@@ -3,6 +3,7 @@ import cv2
 from PIL import Image, ImageTk 
 import os
 from datetime import datetime
+from ultralytics import YOLO
 
 # Source https://www.geeksforgeeks.org/python/how-to-show-webcam-in-tkinter-window-python/
 camera = cv2.VideoCapture(0)
@@ -94,6 +95,10 @@ def save_image():
     else:
         print("No active frame ton save image from")
 
+model = YOLO(
+        "../trainModel/trainingResult/rockPaperScissors-6/weights/best.pt"
+        )
+
 # Uppadaterar the camera frame if it is running
 def update_camera(label_widget, button1):
     global current_frame
@@ -104,11 +109,25 @@ def update_camera(label_widget, button1):
     ret, frame = camera.read()
 
     if not ret:
+        print("Could not read from camera")
         return
 
-    current_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGBA)
+    current_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
 
-    captured_image = Image.fromarray(current_frame)
+    # Source https://roboflow.com/blog/how-to-train-yolov8-on-a-custom-dataset
+    
+    results = model.predict(
+        source= frame,
+        conf=0.25,
+        verbose=False
+    )
+
+    annotated_frame = results[0].plot()
+
+    captured_image = Image.fromarray(
+        cv2.cvtColor(annotated_frame, cv2.COLOR_BGR2RGB)
+    )
+    """ captured_image = Image.fromarray(current_frame) """
     photo_image = ImageTk.PhotoImage(image=captured_image)
 
     label_widget.photo_image = photo_image

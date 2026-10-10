@@ -1,6 +1,8 @@
-train: ../train/images
-val: ../valid/images
-test: ../test/images
+path: C:/Users/Danfr/Documents/Python/Object-Detection-Model/splittedDataset
+
+train: train/images
+val: valid/images
+test: test/images
 
 nc: 3
 names: ['Papper', 'Rock', 'Scissor']
