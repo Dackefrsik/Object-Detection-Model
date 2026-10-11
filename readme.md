@@ -1,10 +1,10 @@
 # Object Detection Model
 
-Ett Python-projekt för objektdetektering med ett grafiskt användargränssnitt (GUI) och funktionalitet för insamling och hantering av dataset.
+A Python-project for object detection with a graphical user interface (GUI) and functionality for collect and manage datasets.
 
 ## Installation
 
-Installera projektets nödvändiga Python-paket:
+Install the projecta mandatory Python-packages:
 
 ```bash
 pip install opencv-python pillow ultralytics
@@ -12,53 +12,53 @@ pip install opencv-python pillow ultralytics
 
 ### Dependencies
 
-Projektet använder följande externa bibliotek:
+The project utilize the following external libraries:
 
-| Bibliotek | Användningsområde |
+| Library | Area of application|
 |-----------|-------------------|
-| `opencv-python` (cv2) | Kamerahantering och bildbehandling |
-| `pillow` (PIL) | Bildhantering och visning i GUI |
-| `ultralytics` | YOLO-objektdetektering |
+| `opencv-python` (cv2) | Camera and immage management |
+| `pillow` (PIL) | Image handeling and display in the GUI |
+| `ultralytics` | YOLO-objectdetection |
 
-Följande bibliotek ingår i Pythons standardbibliotek och behöver inte installeras separat:
+The following libraries is included in pythons standarslibrary and don't need to be installed seperately:
 
-| Bibliotek | Användningsområde |
+| Library | Area of application |
 |-----------|-------------------|
-| `tkinter` | Grafiskt användargränssnitt (GUI) |
-| `os` | Fil- och kataloghantering |
-| `shutil` | Kopiering och flytt av filer |
-| `datetime` | Generering av tidsstämplar |
-| `random` | Slumpmässig sortering av datasetet |
+| `tkinter` | Graphical user interface (GUI) |
+| `os` | File and directory management |
+| `shutil` | Copy and move files |
+| `datetime` | Generation of timestamps |
+| `random` | Random sorting of dataset |
 
-> **Note:** Tkinter följer med de flesta vanliga Python-installationer, men kan behöva installeras separat på vissa operativsystem.
+> **Note:** Tkinter is included in most of the common installations of Python, but could need to bee installed on certain operativ systems
 
-## Användning
+## Use
 
-### Starta gränssnittet
+### Start the user interface
 
-Starta applikationens grafiska gränssnitt med:
+Start the applications graphical user interface with:
 
 ```bash
 python interface/interface.py
 ```
 
-### Dela upp datasetet
+### Split the dataset
 
-Kör följande kommando för att dela upp datasetet i tränings-, validerings- och testdata:
+Run the following commando to devide the dataset into training-, validation-, and testdata:
 
 ```bash
 python trainModel/splitDataset.py
 ```
 
-Datasetet delas upp enligt följande:
+The dataset is devided as following:
 
-| Dataset | Andel |
+| Dataset | Share |
 |---------|-------|
 | Training | 70 % |
 | Validation | 15 % |
 | Test | 15 % |
 
-## Projektstruktur
+## Projectstructure
 
 ```text
 Object-Detection-Model/
