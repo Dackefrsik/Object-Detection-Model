@@ -7,7 +7,7 @@ Ett Python-projekt för objektdetektering med ett grafiskt användargränssnitt 
 Installera projektets nödvändiga Python-paket:
 
 ```bash
-pip install opencv-python pillow keyboard
+pip install opencv-python pillow ultralytics
 ```
 
 ### Dependencies
@@ -18,7 +18,7 @@ Projektet använder följande externa bibliotek:
 |-----------|-------------------|
 | `opencv-python` (cv2) | Kamerahantering och bildbehandling |
 | `pillow` (PIL) | Bildhantering och visning i GUI |
-| `keyboard` | Hantering av tangenttryckningar |
+| `ultralytics` | YOLO-objektdetektering |
 
 Följande bibliotek ingår i Pythons standardbibliotek och behöver inte installeras separat:
 
@@ -28,6 +28,7 @@ Följande bibliotek ingår i Pythons standardbibliotek och behöver inte install
 | `os` | Fil- och kataloghantering |
 | `shutil` | Kopiering och flytt av filer |
 | `datetime` | Generering av tidsstämplar |
+| `random` | Slumpmässig sortering av datasetet |
 
 > **Note:** Tkinter följer med de flesta vanliga Python-installationer, men kan behöva installeras separat på vissa operativsystem.
 
@@ -69,5 +70,5 @@ Object-Detection-Model/
 │   ├── train/
 │   ├── validate/
 │   └── test/
-└── README.md
+└── readme.md
 ```
