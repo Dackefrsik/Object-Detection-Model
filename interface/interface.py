@@ -21,7 +21,7 @@ def interface():
     app.focus_force() # Gives the application keyboard focus
 
     app.bind('<Escape>', lambda e: app.quit())
-    app.bind("<a>", lambda e: save_image())
+    app.bind("<l>", lambda e: save_image())
     app.title("Oject detection model")
 
     label_widget = Label(app)
@@ -90,13 +90,16 @@ def save_image():
     if current_frame is not None:
         date_time = datetime.now().strftime("%Y-%m-%d_%H-%M-%S_%f") # Source https://www.geeksforgeeks.org/python/python-strftime-function/
         os.makedirs("images", exist_ok=True)
-        cv2.imwrite("images/frame" + date_time + ".jpg", current_frame)
+
+        # The image needs to be in BGR format before it is saved
+        frameToSave = cv2.cvtColor(current_frame, cv2.COLOR_RGB2BGR)
+        cv2.imwrite("images/frame" + date_time + ".jpg", frameToSave)
         print("Images saved")
     else:
         print("No active frame ton save image from")
 
 model = YOLO(
-        "../trainModel/trainingResult/rockPaperScissors-6/weights/best.pt"
+        "../trainModel/trainingResult/rockPaperScissors-7/weights/best.pt"
         )
 
 # Uppadaterar the camera frame if it is running
@@ -118,7 +121,10 @@ def update_camera(label_widget, button1):
     
     results = model.predict(
         source= frame,
-        conf=0.25,
+        # A confidence score of 0.75 makes sure that modele more or less can't detect my face or other 
+        # object rather than the on that have been anotated to be classified after the model have 
+        # been trained
+        conf=0.75, 
         verbose=False
     )
 
@@ -127,6 +133,7 @@ def update_camera(label_widget, button1):
     captured_image = Image.fromarray(
         cv2.cvtColor(annotated_frame, cv2.COLOR_BGR2RGB)
     )
+
     """ captured_image = Image.fromarray(current_frame) """
     photo_image = ImageTk.PhotoImage(image=captured_image)
 

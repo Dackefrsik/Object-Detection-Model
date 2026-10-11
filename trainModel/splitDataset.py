@@ -3,15 +3,15 @@ import shutil
 import random
 
 # Paths for images and labels in dataset
-images = os.listdir("../Rock paper scissor dataset.v2/train/images")
-labels = os.listdir("../Rock paper scissor dataset.v2/train/labels")
+images = os.listdir("../Rock paper scissor dataset.v3/train/images")
+labels = os.listdir("../Rock paper scissor dataset.v3/train/labels")
 
 classes = {0: [], 1: [], 2: []}
 
 for image in images:
     labelName = os.path.splitext(image)[0] + ".txt"
     labelPath = os.path.join(
-        "../Rock paper scissor dataset.v2/train/labels",
+        "../Rock paper scissor dataset.v3/train/labels",
         labelName
     )
 
@@ -83,14 +83,14 @@ def splitData(startVal, endVal):
     for i in trainImages:
         
         image = os.path.join(
-        "../Rock paper scissor dataset.v2/train/images",
+        "../Rock paper scissor dataset.v3/train/images",
         i
         )
 
         labelName = os.path.splitext(i)[0] + ".txt"
         
         label = os.path.join(
-        "../Rock paper scissor dataset.v2/train/labels",
+        "../Rock paper scissor dataset.v3/train/labels",
         labelName
         )
 
@@ -100,7 +100,7 @@ def splitData(startVal, endVal):
     # Test data
     for i in testImages:
         image = os.path.join(
-        "../Rock paper scissor dataset.v2/train/images",
+        "../Rock paper scissor dataset.v3/train/images",
         i
         )
 
@@ -108,7 +108,7 @@ def splitData(startVal, endVal):
 
         
         label = os.path.join(
-        "../Rock paper scissor dataset.v2/train/labels",
+        "../Rock paper scissor dataset.v3/train/labels",
         labelName
         )
 
@@ -118,14 +118,14 @@ def splitData(startVal, endVal):
     # Valaidation data
     for i in validImages:
         image = os.path.join(
-        "../Rock paper scissor dataset.v2/train/images",
+        "../Rock paper scissor dataset.v3/train/images",
         i
         )
 
         labelName = os.path.splitext(i)[0] + ".txt"
         
         label = os.path.join(
-        "../Rock paper scissor dataset.v2/train/labels",
+        "../Rock paper scissor dataset.v3/train/labels",
         labelName
         )
 
