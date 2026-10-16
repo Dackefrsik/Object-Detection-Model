@@ -13,7 +13,7 @@ camera_button_name = "Open camera"
 
 # The best version of the trained model
 model = YOLO(
-        "../trainModel/trainingResult/rockPaperScissors-7/weights/best.pt"
+        "../trainModel/trainingResult/rockPaperScissors-3/weights/best.pt"
         )
 
 # Function that runs the interface
@@ -75,7 +75,7 @@ def interface():
     app.mainloop()
 
 # Function for opening the camera
-# Source: https://docs.opencv.org/4.12.0/dd/d43/tutorial_py_video_display.html?utm_source=chatgpt.com
+# Source: https://docs.opencv.org/4.12.0/dd/d43/tutorial_py_video_display.html
 def open_camera(label_widget, button1):
     ret, frame = camera.read()
 
@@ -151,7 +151,7 @@ def update_camera(label_widget, button1):
         # A confidence score of 0.75 makes sure that modele more or less can't detect my face or other 
         # object rather than the on that have been anotated to be classified after the model have 
         # been trained
-        conf=0.75, 
+        conf=0.65, 
         verbose=False
     )
 

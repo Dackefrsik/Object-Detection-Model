@@ -13,7 +13,7 @@ cache: false
 device: ''
 workers: 8
 project: C:\Users\Danfr\Documents\Python\Object-Detection-Model\trainModel\trainingResult
-name: rockPaperScissors-2
+name: rockPaperScissors-4
 exist_ok: false
 pretrained: true
 cls_remap: true
@@ -111,4 +111,4 @@ auto_augment: randaugment
 erasing: 0.4
 cfg: null
 tracker: tracktrack.yaml
-save_dir: C:\Users\Danfr\Documents\Python\Object-Detection-Model\trainModel\trainingResult\rockPaperScissors-2
+save_dir: C:\Users\Danfr\Documents\Python\Object-Detection-Model\trainModel\trainingResult\rockPaperScissors-4

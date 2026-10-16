@@ -1,9 +1,9 @@
-# Source https://docs.ultralytics.com/models/yolov8?utm_source=chatgpt.com
+# Source https://docs.ultralytics.com/models/yolov8
 from ultralytics import YOLO
 import os
 
 # Absolut path to the yaml-file in the dataset
-path = os.path.abspath("../Rock paper scissor dataset.v3/data.yaml")
+path = os.path.abspath("../Datasets/Rock paper scissor dataset.v3/data.yaml")
 
 # The predefined CNN-model that will be trained on the custom dataset
 model = YOLO("yolov8n.pt")

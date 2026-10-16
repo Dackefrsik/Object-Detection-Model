@@ -3,8 +3,8 @@ import shutil
 import random
 
 # Paths for images and labels in dataset
-images = os.listdir("../Rock paper scissor dataset.v3/train/images")
-labels = os.listdir("../Rock paper scissor dataset.v3/train/labels")
+images = os.listdir("../Datasets/Rock paper scissor dataset.v3/train/images")
+labels = os.listdir("../Datasets/Rock paper scissor dataset.v3/train/labels")
 
 # Index for each class
 classes = {0: [], 1: [], 2: []}
@@ -19,7 +19,7 @@ for image in images:
 
     # Pathway to the image
     labelPath = os.path.join(
-        "../Rock paper scissor dataset.v3/train/labels",
+        "../Datasets/Rock paper scissor dataset.v3/train/labels",
         labelName
     )
 
@@ -31,7 +31,7 @@ for image in images:
     classes[classID].append(image)
 
 # Function to split dataset into test, train and validation 
-def splitData(startVal, endVal):
+def splitData():
 
     # Testimages
     testPathImages = "../splittedDataset/test/images"
@@ -72,7 +72,7 @@ def splitData(startVal, endVal):
     validImages = []
 
     # Checking each class of images and append al of them in 70/15/15 split to repektive set of images
-    for classImages in classes.items():
+    for classImages in classes.values():
 
         # Shuffle the images for each class so it dosen't choos images in a specific order base on 
         # when they been added to the dataset
@@ -93,7 +93,7 @@ def splitData(startVal, endVal):
 
         # Image path
         image = os.path.join(
-        "../Rock paper scissor dataset.v3/train/images",
+        "../Datasets/Rock paper scissor dataset.v3/train/images",
         i
         )
 
@@ -102,7 +102,7 @@ def splitData(startVal, endVal):
 
         # Label path 
         label = os.path.join(
-        "../Rock paper scissor dataset.v3/train/labels",
+        "../Datasets/Rock paper scissor dataset.v3/train/labels",
         labelName
         )
 
@@ -114,7 +114,7 @@ def splitData(startVal, endVal):
     # Test data
     for i in testImages:
         image = os.path.join(
-        "../Rock paper scissor dataset.v3/train/images",
+        "../Datasets/Rock paper scissor dataset.v3/train/images",
         i
         )
 
@@ -122,7 +122,7 @@ def splitData(startVal, endVal):
 
         
         label = os.path.join(
-        "../Rock paper scissor dataset.v3/train/labels",
+        "../Datasets/Rock paper scissor dataset.v3/train/labels",
         labelName
         )
 
@@ -132,14 +132,14 @@ def splitData(startVal, endVal):
     # Valaidation data
     for i in validImages:
         image = os.path.join(
-        "../Rock paper scissor dataset.v3/train/images",
+        "../Datasets/Rock paper scissor dataset.v3/train/images",
         i
         )
 
         labelName = os.path.splitext(i)[0] + ".txt"
         
         label = os.path.join(
-        "../Rock paper scissor dataset.v3/train/labels",
+        "../Datasets/Rock paper scissor dataset.v3/train/labels",
         labelName
         )
 
