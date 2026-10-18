@@ -53,3 +53,6 @@ runs/predict/
 
 # Local GUI recordings
 *.mp4
+ 
+# Custom config
+config.py

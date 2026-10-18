@@ -5,6 +5,8 @@ import os
 from datetime import datetime
 from ultralytics import YOLO
 
+from config import WIDTH, HEIGHT
+
 # Source https://www.geeksforgeeks.org/python/how-to-show-webcam-in-tkinter-window-python/
 camera = cv2.VideoCapture(0)
 current_frame = None
@@ -18,11 +20,8 @@ model = YOLO(
 
 # Function that runs the interface
 def interface():
-
-    # Dimentions
-    width, height = 800, 600
-    camera.set(cv2.CAP_PROP_FRAME_WIDTH, width)
-    camera.set(cv2.CAP_PROP_FRAME_HEIGHT, height)
+    camera.set(cv2.CAP_PROP_FRAME_WIDTH, WIDTH)
+    camera.set(cv2.CAP_PROP_FRAME_HEIGHT, HEIGHT)
 
     # Setting up a tak inter applikation
     # Source https://docs.python.org/3/library/tkinter.html?
@@ -144,6 +143,7 @@ def update_camera(label_widget, button1):
         return
 
     current_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+   
 
     # Source https://roboflow.com/blog/how-to-train-yolov8-on-a-custom-dataset
     results = model.predict(
