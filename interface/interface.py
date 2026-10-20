@@ -15,7 +15,7 @@ camera_button_name = "Open camera"
 
 # The best version of the trained model
 model = YOLO(
-        "../trainModel/trainingResult/rockPaperScissors-4/weights/best.pt"
+        "../trainModel/trainingResult/rockPaperScissors/weights/best.pt"
         )
 
 # Function that runs the interface

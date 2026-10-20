@@ -1,4 +1,4 @@
-path: C:/Users/Danfr/Documents/Python/Object-Detection-Model/splittedDataset/New
+path: C:/Users/Danfr/Documents/Python/Object-Detection-Model/splittedDataset/
 
 train: ../train/images
 val: ../valid/images

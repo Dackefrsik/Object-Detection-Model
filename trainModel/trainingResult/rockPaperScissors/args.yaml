@@ -1,19 +1,20 @@
 task: detect
 mode: train
 model: yolov8n.pt
-data: C:\Users\Danfr\Documents\Python\Object-Detection-Model\Rock paper scissor dataset.v1\data.yaml
-epochs: 20
+data: C:\Users\Danfr\Documents\Python\Object-Detection-Model\Datasets\Rock Paper Scissors
+  SXSW.v14i.yolov8\data.yaml
+epochs: 50
 time: null
-patience: 100
-batch: 16
+patience: 15
+batch: 8
 imgsz: 640
 save: true
 save_period: -1
 cache: false
-device: ''
+device: '0'
 workers: 8
 project: C:\Users\Danfr\Documents\Python\Object-Detection-Model\trainModel\trainingResult
-name: rockPaperScissors
+name: rockPaperScissors-6
 exist_ok: false
 pretrained: true
 cls_remap: true
@@ -111,4 +112,4 @@ auto_augment: randaugment
 erasing: 0.4
 cfg: null
 tracker: tracktrack.yaml
-save_dir: C:\Users\Danfr\Documents\Python\Object-Detection-Model\trainModel\trainingResult\rockPaperScissors
+save_dir: C:\Users\Danfr\Documents\Python\Object-Detection-Model\trainModel\trainingResult\rockPaperScissors-6
