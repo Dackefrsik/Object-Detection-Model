@@ -32,6 +32,10 @@ The following libraries is included in pythons standarslibrary and don't need to
 
 > **Note:** Tkinter is included in most of the common installations of Python, but could need to bee installed on certain operativ systems
 
+## Config 
+
+config.py includes system specific variables in the form of WIDTH and HEIGHT 
+
 ## Use
 
 ### Start the user interface
@@ -63,6 +67,7 @@ The dataset is devided as following:
 ```text
 Object-Detection-Model/
 ├── interface/
+│   ├── config.py/
 │   └── interface.py
 ├── trainModel/
 │   └── splitDataset.py
