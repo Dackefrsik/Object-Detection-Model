@@ -15,7 +15,7 @@ camera_button_name = "Open camera"
 
 # The best version of the trained model
 model = YOLO(
-        "../trainModel/trainingResult/rockPaperScissors-3/weights/best.pt"
+        "../trainModel/trainingResult/rockPaperScissors-4/weights/best.pt"
         )
 
 # Function that runs the interface
@@ -143,7 +143,6 @@ def update_camera(label_widget, button1):
         return
 
     current_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
-   
 
     # Source https://roboflow.com/blog/how-to-train-yolov8-on-a-custom-dataset
     results = model.predict(
@@ -151,7 +150,7 @@ def update_camera(label_widget, button1):
         # A confidence score of 0.75 makes sure that modele more or less can't detect my face or other 
         # object rather than the on that have been anotated to be classified after the model have 
         # been trained
-        conf=0.65, 
+        conf = 0.5,
         verbose=False
     )
 
