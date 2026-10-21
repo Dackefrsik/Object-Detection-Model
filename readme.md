@@ -36,6 +36,14 @@ The following libraries is included in pythons standarslibrary and don't need to
 
 config.py includes system specific variables in the form of WIDTH and HEIGHT 
 
+## Train model 
+
+The model is trained by using the following command:
+
+```bash
+python trainModel/train.py
+```
+
 ## Use
 
 ### Start the user interface
@@ -48,32 +56,35 @@ python interface/interface.py
 
 ### Split the dataset
 
-Run the following commando to devide the dataset into training-, validation-, and testdata:
-
-```bash
-python trainModel/splitDataset.py
-```
-
-The dataset is devided as following:
+The dataset comes with the following split:
 
 | Dataset | Share |
 |---------|-------|
-| Training | 70 % |
-| Validation | 15 % |
-| Test | 15 % |
+| Training | 88 % |
+| Validation | 8 % |
+| Test | 4 % |
 
 ## Projectstructure
 
 ```text
 Object-Detection-Model/
+├── Datasets/
+│   └── Rock Paper Scissors SXSW.v14i.yolov8/
+│       ├── test/
+│       ├── train/
+│       ├── valid/
+│       ├── data.yaml
+│       ├── README.dataset.txt/
+│       └── README.robodflow.txt
 ├── interface/
 │   ├── config.py/
 │   └── interface.py
 ├── trainModel/
-│   └── splitDataset.py
+│   ├── trainingResult/
+│   └── train.py
 ├── splittedDataset/
 │   ├── train/
-│   ├── validate/
+│   ├── valid/
 │   └── test/
 └── readme.md
 ```
